@@ -13,13 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EntryController : NSObject
 
-+ (EntryController *)shared;
-
 @property (nonatomic, strong) NSArray *entries;
 
-- (void)addEntry:(Entry *)entry;
-- (void)removeEntry:(Entry *)entry;
++ (EntryController *)shared;
 
+- (void)addEntryWithTitle:(NSString *)title text:(NSString *)text;
+- (void)removeEntry:(Entry *)entry;
+- (void)updateEntry:(Entry *)entry title:(NSString *)title text:(NSString *)text;
 
 @end
 

@@ -7,8 +7,15 @@
 //
 
 #import "EntryDetailViewController.h"
+#import "EntryController.h"
 
 @interface EntryDetailViewController ()
+
+//MARK: - outlets
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
+
+
 
 @end
 
@@ -16,17 +23,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self updateViews];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)updateViews
+{
+    if (!self.entry) return;
+    self.titleTextField.text = self.entry.title;
+    self.bodyTextView.text = self.entry.text;
+    
 }
-*/
+- (IBAction)saveButtonTapped:(id)sender
+{
+    if (self.entry) {
+        [EntryController.shared updateEntry:self.entry title:self.titleTextField text:self.bodyTextView.text];
+    } else {
+        [EntryController.shared addEntryWithTitle:self.title text:self.bodyTextView.text];
+    }
+    [self.navigationController popViewControllerAnimated:true];
+}
+
+
+- (IBAction)clearButtonTapped:(id)sender
+{
+    self.titleTextField.text = @"";
+    self.bodyTextView.text = @"";
+}
+
+-(void)setEntry:(Entry *)entry
+{
+    if (entry != entry) {
+        entry = entry;
+        [self updateViews];
+    }
+}
+
+
 
 @end

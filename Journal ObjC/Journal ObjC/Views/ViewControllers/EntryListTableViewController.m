@@ -7,9 +7,8 @@
 //
 
 #import "EntryListTableViewController.h"
-#import <UIKit/UIKit.h>
-#import "Entry.h"
 #import "EntryController.h"
+#import "EntryDetailViewController.h"
 
 @interface EntryListTableViewController ()
 
@@ -17,8 +16,9 @@
 
 @implementation EntryListTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:true];
+    [self.tableView reloadData];
 
 }
 
@@ -34,8 +34,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"entryCell" forIndexPath:indexPath];
     
     Entry *entry = EntryController.shared.entries[indexPath.row];
-//    cell.entry = entry;
-    
+    cell.textLabel.text = entry.title;
+
     return cell;
 }
 
@@ -56,8 +56,8 @@
     if ([segue.identifier isEqualToString:@"toDetailView"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 //
-//        EntryController *entryDetailViewController = segue.destinationViewController;
-//        entryDetailViewController.entry = entry;
+        EntryController *entryDetailViewController = segue.destinationViewController;
+        entryDetailViewController.entry = entry;
     }
 }
 

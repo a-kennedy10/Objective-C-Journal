@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="995.65217391304361" y="24.776785714285712"/>
         </scene>
-        <!--View Controller-->
+        <!--Entry Detail View Controller-->
         <scene sceneID="nmu-J0-Jzk">
             <objects>
-                <viewController id="GZd-Il-voN" sceneMemberID="viewController">
+                <viewController id="GZd-Il-voN" customClass="EntryDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wc2-za-qD6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,6 +65,9 @@
                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearButtonTapped:" destination="GZd-Il-voN" eventType="touchUpInside" id="E2q-1r-Ffq"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jhz-ep-aE9">
                                 <rect key="frame" x="20" y="109" width="374" height="34"/>
@@ -77,8 +80,16 @@
                         <viewLayoutGuide key="safeArea" id="Pz6-Ny-Uoa"/>
                     </view>
                     <navigationItem key="navigationItem" id="DCB-zm-xeZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2rC-gg-npp"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2rC-gg-npp">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="GZd-Il-voN" id="L9f-Mu-oHr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="WuO-ES-H80" id="nxC-Zg-wv9"/>
+                        <outlet property="titleTextField" destination="Jhz-ep-aE9" id="aA2-FF-29r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hS6-YT-Gft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

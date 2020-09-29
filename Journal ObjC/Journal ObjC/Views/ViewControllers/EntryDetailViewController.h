@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EntryDetailViewController : UIViewController
 
+@property (nonatomic, strong)Entry *entry;
+
 @end
 
 NS_ASSUME_NONNULL_END
